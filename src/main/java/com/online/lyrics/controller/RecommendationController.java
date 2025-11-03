@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/lyricmind/v1/recommendations")
+@RequestMapping("/api/songs/v1/recommendations")
 public class RecommendationController {
 
     @Autowired
