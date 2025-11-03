@@ -1,0 +1,73 @@
+#spring:
+#  application:
+#    name: Lyrics
+#
+#  data:
+#    mongodb:
+#      uri: ${MONGO_URI}
+#      database: lyricsdb
+#
+#  ai:
+#
+#    # ========== OpenAI Configuration ==========
+##    openai:
+##      api-key: api
+##      chat:
+##        options:
+##          model: gpt-4o-mini
+##      embedding:
+##        options:
+##          model: text-embedding-3-large
+#
+#    # ========== Gemini Configuration ==========
+#    gemini:
+#      api-key: ${GEMINI_API_KEY}
+#      chat:
+#        model: gemini-1.5-pro        # or gemini-1.5-flash
+#      embedding:
+#        model: text-embedding-004     # for semantic embeddings
+#
+#    # ========== Vector Store (MongoDB) ==========
+#    vectorstore:
+#      mongodb:
+#        collection-name: lyricsdb_vector_store
+#        initialize-schema: true
+#        path-name: embedding
+#        index-name: lyricsdb_vector_index
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+spring:
+  application:
+    name: Lyrics
+  data:
+    mongodb:
+      uri: ${MONGO_URI}
+      database: lyricsdb
+  ai:
+#    gemini:
+#      api-key: AIzaSyAzSJf5bVyEQsn4lKCAekvzfBiEgCuPpC
+#      chat:
+#        model: gemini-1.5-flash        # or gemini-1.5-flash for faster inference
+#      embedding:
+#        model: text-embedding-004      # recommended for semantic vector embeddings
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      chat:
+        options:
+          model: gpt-4o-mini
+      embedding:
+        options:
+          model: text-embedding-3-small
+
+    vectorstore:
+      mongodb:          # database name
+        collection-name: lyricsdb_vector_store
+        initialize-schema: true
+        path-name: embedding            # field name used to store embedding vectors
+        index-name: lyricsdb_vector_index
+

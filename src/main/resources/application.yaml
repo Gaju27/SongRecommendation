@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: Lyrics
+
+  data:
+    mongodb:
+      uri: ${MONGO_URI}
+      database: lyricsdb
+  main:
+    allow-bean-definition-overriding: true
+  ai:
+    model:
+      embedding: ollama
+    ollama:
+      embedding:
+        base-url: http://localhost:11434
+        options:
+          model: llama3
+    vectorstore:
+      mongodb:
+        initialize-schema: true
+        collection-name: "lyrics_vector_store"
+        index-name: "lyrics_vector_index"
+        path-name: "embedding"
